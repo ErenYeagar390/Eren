@@ -1,1 +1,102 @@
-# Eren
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; padding: 0; }
+    .container { width: 90%; max-width: 800px; margin: auto; padding: 20px; }
+    h2 { text-align: center; color: #333; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 20px; }
+    input, button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 5px; border: 1px solid #ccc; }
+    button { background: #4CAF50; color: white; cursor: pointer; }
+    button:hover { background: #45a049; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 10px; text-align: center; }
+    th { background: #4CAF50; color: white; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Page -->
+    <div id="loginPage" class="card">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div><!-- Dashboard -->
+<div id="dashboard" class="hidden">
+  <div class="card">
+    <h2>Add New Student</h2>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="mobile" placeholder="Mobile Number">
+    <input type="number" id="attendance" placeholder="Attendance (%)">
+    <input type="number" id="marks" placeholder="Marks">
+    <button onclick="addStudent()">Add Student</button>
+  </div>
+
+  <div class="card">
+    <h2>Student List</h2>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Attendance (%)</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+  </div>  <script>
+    // Simple login check
+    function login() {
+      let user = document.getElementById('username').value;
+      let pass = document.getElementById('password').value;
+
+      if(user === "admin" && pass === "1234") {
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+      } else {
+        alert("Invalid username or password. Try admin / 1234");
+      }
+    }
+
+    // Add student to table
+    function addStudent() {
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let mobile = document.getElementById('mobile').value;
+      let attendance = document.getElementById('attendance').value;
+      let marks = document.getElementById('marks').value;
+
+      if(!name || !email || !mobile || !attendance || !marks) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      let table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+      let newRow = table.insertRow();
+
+      newRow.insertCell(0).innerText = name;
+      newRow.insertCell(1).innerText = email;
+      newRow.insertCell(2).innerText = mobile;
+      newRow.insertCell(3).innerText = attendance;
+      newRow.insertCell(4).innerText = marks;
+
+      // Clear inputs
+      document.getElementById('name').value = "";
+      document.getElementById('email').value = "";
+      document.getElementById('mobile').value = "";
+      document.getElementById('attendance').value = "";
+      document.getElementById('marks').value = "";
+    }
+  </script></body>
+</html>
