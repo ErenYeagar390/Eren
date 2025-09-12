@@ -27,6 +27,7 @@
       <input type="password" id="password" placeholder="Password">
       <button onclick="login()">Login</button>
     </div><!-- Dashboard -->
+    
 <div id="dashboard" class="hidden">
   <div class="card">
     <h2>Add New Student</h2>
@@ -56,7 +57,7 @@
 </div>
 
   </div>  <script>
-    // Simple login check
+    
     function login() {
       let user = document.getElementById('username').value;
       let pass = document.getElementById('password').value;
@@ -69,7 +70,7 @@
       }
     }
 
-    // Add student to table
+    
     function addStudent() {
       let name = document.getElementById('name').value;
       let email = document.getElementById('email').value;
@@ -91,7 +92,7 @@
       newRow.insertCell(3).innerText = attendance;
       newRow.insertCell(4).innerText = marks;
 
-      // Clear inputs
+      
       document.getElementById('name').value = "";
       document.getElementById('email').value = "";
       document.getElementById('mobile').value = "";
